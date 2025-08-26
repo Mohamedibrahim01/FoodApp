@@ -7,7 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll";
+//import { Link as ScrollLink } from "react-scroll";
 
 export function Navbar() {
   return (
@@ -37,12 +37,14 @@ export function Navbar() {
         <NavigationMenuList className="flex gap-8">
           {/* Home with react-scroll */}
           <NavigationMenuItem>
-            <a
-              href="/"
-              className="cursor-pointer hover:text-red-600 text-gray-700 font-medium transition-colors"
-            >
-              Home
-            </a>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <a
+                href="/"
+                className="cursor-pointer hover:text-red-600 text-gray-700 font-medium transition-colors"
+              >
+                Home
+              </a>
+            </motion.div>
           </NavigationMenuItem>
 
           {/* Menu */}
