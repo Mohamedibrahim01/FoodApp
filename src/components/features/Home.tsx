@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { useCart } from "@/context/CartContext";
 
-interface Meal {
+export interface Meal {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
@@ -25,6 +26,7 @@ export default function Home() {
   const [normal, setNormal] = useState<Meal[]>([]);
   const [dessert, setDessert] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const loadData = async () => {
@@ -79,6 +81,15 @@ export default function Home() {
                 className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600 transition"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() =>
+                  addToCart({
+                    id: meal.idMeal,
+                    name: meal.strMeal,
+                    price: Math.floor(Math.random() * 100) + 50, // سعر عشوائي مؤقت
+                    image: meal.strMealThumb,
+                    quantity: 1,
+                  })
+                }
               >
                 Order Now
               </motion.button>
