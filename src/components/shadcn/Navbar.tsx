@@ -7,8 +7,10 @@ import {
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useCart } from "@/context/CartContext";
 
 export function Navbar() {
+  const { cartCount } = useCart();
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -69,7 +71,7 @@ export function Navbar() {
                 Cart
                 {/* Badge */}
                 <span className="absolute -top-3 -right-4 bg-white text-red-600 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-md">
-                  0
+                  {cartCount}
                 </span>
               </Link>
             </motion.div>
